@@ -27,6 +27,104 @@
             <button class="button">заказать звонок</button>
           </div>
         </header>
+        <div class="promo__wrapper">
+          <h1 class="promo__header">Подбор пульсометра</h1>
+          <h2 class="promo__subheader">с учётом Вашего уровня подготовки</h2>
+          <div class="promo__icons">
+            <div class="promo__icon">
+              <img src="icons/clock.png" alt="clock" />Время подбора: 10 минут
+            </div>
+            <div class="promo__icon">
+              <img src="icons/dilivered.png" alt="parcel" />
+              Бесплатная доставка
+            </div>
+            <div class="promo__icon">
+              <img src="icons/messege.png" alt="messege" />
+              Ответим на все вопросы
+            </div>
+          </div>
+          <button class="button button_main">заказать кОНСУЛЬТАЦИЮ</button>
+          <div class="promo__link">
+            или
+            <a href="#">ПЕРЕЙТИ В КАТАЛОГ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="benefits">
+      <div class="container">
+        <h2 class="title">НАШИ ПРЕИМУЩЕСТВА</h2>
+        <div class="benefits__wrapper">
+          <div class="benefits__item">
+            <img src="icons/cup2.png" alt="cup" class="benefits__img" />
+            <div class="benefits__title">Делимся опытом</div>
+            <div class="benefits__descr">
+              Наши сотрудники всегда готовы поделиться своим опытом, так как
+              сами бегают полумарафоны, переплыли Босфор, готовятся к
+              соревнованиям по триатлону!
+            </div>
+          </div>
+          <div class="benefits__item">
+            <img src="icons/heart.png" alt="" class="benefits__img" />
+            <div class="benefits__title">Заботимся о здоровье</div>
+            <div class="benefits__descr">
+              Мы работаем для того, чтобы Ваши занятия спортом шли на пользу
+              Вашему здоровью и были в радость Вам и Вашим близким!
+            </div>
+          </div>
+          <div class="benefits__item">
+            <img src="icons/shoe2.png" alt="" class="benefits__img" />
+            <div class="benefits__title">Учим бегать</div>
+            <div class="benefits__descr">
+              Помогаем с обучением правильной технике бега! Дружим с крупнейшей
+              школой бега в России - <a href="#">I LOVE RUNNING</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="consultation">
+      <div class="container">
+        <h2 class="title title_left">
+          Получите бесплатную консультацию <br />по подбору пульсометра
+        </h2>
+        <div class="consultation__descr">
+          Просто заполните форму заявки <br />
+          и мы перезвоним вам в течении 10 минут
+        </div>
+        <form class="feed-form" action="№">
+          <!-- Тег form в нем есть обезательный атрибут action это тот обрботчик формы который будет запускаться -->
+          <!-- <label for="first">first input</label> -->
+          <!-- Это указатель который преправляет нас на определенный инпут. label обезательно необходимо связывать с inputom и эту взаимосвязь прописывает в for  при помощи id и такой же id дублируем в input -->
+          <!-- <input id="first" type="text" /> -->
+          <!-- Также можно разместить label c input по другомуЭТО часто используеться для создания интерактивных инпутов
+           -->
+          <!-- <label>
+            <input type="text" />
+          </label> -->
+          <!-- placeholder="" отвечает за текст который ввидит пользователь до ввода в него данных -->
+          <!-- value="" текст котрый введен в input изначально какойто шаблон  -->
+          <!-- type= можно использовать для валидации при указании number в input можно будет ввести только цифры, при указании "email" можно ввести только названия почты  -->
+          <!--required делеает input обезательным для заполнения  -->
+          <!-- атрибут name используеться для обработки при помощи script полученныхданных их конкретного input -->
+
+          <input name="name" required placeholder="Ваше имя" type="text" />
+          <input
+            name="phone"
+            required
+            placeholder="Ваш телефон"
+            type="number"
+          />
+          <input name="email" required placeholder="Ваше E-mail" type="email" />
+          <!-- <input type="submit" value="заказать КОНСУЛЬТАЦИЮ" /> -->
+          <!-- input c type="submit" это кнопка для для отправки данных формы  на сервер но если мы будем использовать тег button внутри него скрыт тег submit поэтому можно использовать его просто кнопку button-->
+
+          <!-- <input type="reset" />  когда внутри инпута стоит type="reset" это кнопка сброса очитски всеx данных которые ввел пользователь-->
+
+          <!-- <textarea style="resizze:none" name="" id="" cols="30" rows="10"></textarea> этот тег создает область для ввода текста параметры которого ругулируються rows="10" не более 10 строчек, cols="30" ширина колонок (они не обезательны), можно установить при помощи CSS, "resizze: none необходимо устанавливать для отключение функции уголком размеров окна пользователем -->
+
+          <button class="button button_submit">заказать КОНСУЛЬТАЦИЮ</button>
+        </form>
       </div>
     </div>
   </body>
