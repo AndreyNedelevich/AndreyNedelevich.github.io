@@ -1,0 +1,145 @@
+.catalog {
+  padding-bottom: 100px;
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    list-style-type: none;
+    // Убираем точки в UL листе
+    margin-bottom: 0;
+    padding-left: 0;
+    //  В UL есть свои стили по умолчанию поэтому мы их убираем что бы не мешали.
+  }
+  &__tab {
+    width: 220px;
+    height: 50px;
+    border: solid 2px #d0d0d0;
+    font-size: 18px;
+    font-weight: 400;
+    color: #6b6b6b;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 48px;
+    //  Что бы выровнять текст в блоке в одну строчку мы задаем межстрочный интерва line-height в размер того блока в котором мы выравниваем текст.
+    transform: skewX(-25deg);
+    // Для того что бы сделать линии наклонные по вертикале мы используем свойство transform:skewX трансформация по X и в скобках указываем в градусах наклон линии по вертикале.
+    margin: 0 5px;
+    //  Что создать отсупы между табами мы устанавливаем margin 0 сверху и снизу и 5px по бокам. Если установить только справа или слева то общий блок сдвиниться.
+    cursor: pointer;
+    //  Добавляем курсор для элемента что бы пользователь знал что он может нажать на элемент
+    transition: 0.5s all;
+    //  Добавляем что бы все изменени были плавными.
+    &:hover {
+      box-shadow: 3px 3px 20px $main-color;
+      // Добавляем псевдокласс как hoverи зажаем определенном поведение при наведении на таб будт происходить эффект. Стилистическое свойство box-shadow: первые два значение это смещение вправо и вниз тени от элемента по X и Y (если отрицательные то размытие будет двигаться влево и вверх). Третье значение это размытие этой тени и последние это цвет.
+      border: none;
+    }
+    div {
+      transform: skewX(25deg);
+      // Обарачивае текст в index в div что бы выделить его в отдельные блоки для того что бы применить к ним обраный наклон и выровнять текст внутри.
+    }
+    &_active {
+      color: #fff;
+      background-color: $main-color;
+      border: none;
+      // Убираем бордер с автивного таба.
+    }
+  }
+  &__content {
+    margin-top: 60px;
+  }
+  &-item {
+    width: 300px;
+    min-height: 440px;
+    border: solid 2px #e8e8e8;
+    padding: 20px 20px 26px 20px;
+    overflow: hidden;
+    // Устанавливаем свойство overflow: hidden что бы скрыть секцию. Будет видна только тот элемент у которого стоит класс active
+    &__img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      //  Что бы избежать искажение верстки мы прописываем что картинка которая будет менять ее максимальная ширина будет 100% от родительского блока.
+      height: 200px;
+    }
+    &__subtitle {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      color: #0d0d0d;
+    }
+    &__descr {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 300;
+      color: #0d0d0d;
+      text-align: center;
+    }
+    &__link {
+      display: block;
+      // Так как ссылка это инлайн элемент и к нему не применимо text align center мы изменяем его на блок.
+      margin-top: 17px;
+      color: $main-color;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: underline;
+      // Эффект подчеркнутого текста
+      text-align: center;
+      &:hover {
+        color: $main-color;
+        // ПРи помощи псевдокласса hover делеаем так что бы цвет ссылки при наведении не изменялся. Отключаем дкфолтное поведение.
+      }
+    }
+    hr {
+      background-color: #e8e8e8;
+      margin-top: 19px;
+      margin-bottom: 21px;
+      border-bottom: none;
+      // Что бы уменьшить ширину полоски до 1px мы убираем нижний Border и ширина становиться 1px
+    }
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__old-price {
+      color: #555555;
+      font-size: 14px;
+      font-weight: 300;
+      text-decoration: line-through;
+      // Свойства перечеркивания текста.
+    }
+    &__price {
+      font-size: 20px;
+      font-weight: 700px;
+      color: #050505;
+    }
+    &__wrapper {
+      display: flex;
+      width: calc(200% + 40px);
+      // При создании второго  информационого блока коорый появляеться при нажатии подробно мы обарачиваем все в блок "catalog-item__wrapper"> и задаем ему ширну в 200% но так как ниже мы добавили margin-right и left по 40px блоки наежают один на другог. ЧТО БЫ это исправить используем функцию calc(200% + 40px) внутри которой задаем параметры ширины плюсую ее главное что бы между + было по пробелу.
+    }
+    &__content {
+      width: 50%;
+      margin-right: 0px;
+      transform: translateX(-100%);
+      &_active {
+        transform: translateX(0%);
+        margin-right: 20px;
+        // Когда стоит класс активности то мы видим контент как только мы убираем класс активности то контент  transform: translateX(-100%); смещаеться влево. И margin right будет становиться 0px
+      }
+    }
+    &__list {
+      width: 50%;
+      margin-left: 20px;
+      transform: translateX(0);
+      &_active {
+        transform: translateX(-100%);
+        margin-right: 0px;
+        // Здесь логика другая когда элемент скрыт он стоит на своем месте сбоку как только он становиться активным он перемещаеться влево на 100% становиться на месте контента.
+      }
+    }
+  }
+}
