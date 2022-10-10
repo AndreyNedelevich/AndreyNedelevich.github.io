@@ -47,13 +47,23 @@
     }
   }
   &__content {
+    display: none;
+    // Меняя display: на none исчезает весь каталог.
+    justify-content: space-between;
     margin-top: 60px;
+    flex-wrap: wrap;
+    // устанавливаем что бы все элементы которые не помещаються переносились на следующую строку.
+    &_active {
+      display: flex;
+      // Но при наличия класса актив контент будет отображаться.
+    }
   }
   &-item {
     width: 300px;
     min-height: 440px;
     border: solid 2px #e8e8e8;
     padding: 20px 20px 26px 20px;
+    margin-bottom: 20px;
     overflow: hidden;
     // Устанавливаем свойство overflow: hidden что бы скрыть секцию. Будет видна только тот элемент у которого стоит класс active
     &__img {
@@ -86,6 +96,7 @@
       font-weight: 500;
       text-decoration: underline;
       // Эффект подчеркнутого текста
+      text-transform: uppercase;
       text-align: center;
       &:hover {
         color: $main-color;
@@ -125,6 +136,7 @@
       width: 50%;
       margin-right: 0px;
       transform: translateX(-100%);
+      transition: 0.5s all;
       &_active {
         transform: translateX(0%);
         margin-right: 20px;
@@ -132,13 +144,54 @@
       }
     }
     &__list {
+      position: relative;
+      padding-left: 19px;
+      margin-bottom: 0;
+      // Так как ul есть свои padding-left и  margin-bottom устанавливаем в 0 что бы не мешали.
       width: 50%;
       margin-left: 20px;
       transform: translateX(0);
+      padding-right: 20px;
+      transition: 0.5s all;
+      list-style-type: none;
+      // Убираем индификаторы с UL
       &_active {
         transform: translateX(-100%);
         margin-right: 0px;
         // Здесь логика другая когда элемент скрыт он стоит на своем месте сбоку как только он становиться активным он перемещаеться влево на 100% становиться на месте контента.
+      }
+      li {
+        position: relative;
+        font-size: 14px;
+        font-weight: 300;
+        text-align: left;
+        color: #555;
+        margin-bottom: 20px;
+        &:before {
+          content: "";
+          position: absolute;
+          width: 5px;
+          height: 5px;
+          background-color: $main-color;
+          left: -14px;
+          top: 7px;
+          // При помощи создания псевдоэлемета :before (очень важно что бы они работали нужно прописывать content:'') создаем
+        }
+      }
+    }
+    &__back {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(calc(-50% - 19px));
+      display: block;
+      color: $main-color;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: underline;
+      text-transform: uppercase;
+      &:hover {
+        color: $main-color;
       }
     }
   }
