@@ -25,7 +25,9 @@
             <a href="tel:+74999228974" class="header__phone"
               >+7 (499) 922-89-74</a
             >
-            <button class="button">заказать звонок</button>
+            <button data-modal="consultation" class="button">
+              заказать звонок
+            </button>
           </div>
         </header>
         <div class="promo__wrapper">
@@ -44,7 +46,9 @@
               Ответим на все вопросы
             </div>
           </div>
-          <button class="button button_main">заказать кОНСУЛЬТАЦИЮ</button>
+          <button data-modal="consultation" class="button button_main">
+            заказать кОНСУЛЬТАЦИЮ
+          </button>
           <div class="promo__link">
             или
             <a href="#">ПЕРЕЙТИ В КАТАЛОГ</a>
@@ -93,7 +97,7 @@
           Просто заполните форму заявки <br />
           и мы перезвоним вам в течении 10 минут
         </div>
-        <form class="feed-form" action="№">
+        <form id="consultation-form" class="feed-form" action="№">
           <!-- Тег form в нем есть обезательный атрибут action это тот обрботчик формы который будет запускаться -->
           <!-- <label for="first">first input</label> -->
           <!-- Это указатель который преправляет нас на определенный инпут. label обезательно необходимо связывать с inputom и эту взаимосвязь прописывает в for  при помощи id и такой же id дублируем в input -->
@@ -106,17 +110,19 @@
           <!-- placeholder="" отвечает за текст который ввидит пользователь до ввода в него данных -->
           <!-- value="" текст котрый введен в input изначально какойто шаблон  -->
           <!-- type= можно использовать для валидации при указании number в input можно будет ввести только цифры, при указании "email" можно ввести только названия почты  -->
-          <!--required делеает input обезательным для заполнения  -->
+          <!--required  делеает input обезательным для заполнения  -->
           <!-- атрибут name используеться для обработки при помощи script полученныхданных их конкретного input -->
+          <!-- minlength="" этот атрибут используем для того что бы прописать какое количество символов должно быть записано в инпут. Если пользователь запишет меньше форма не отправиться. -->
+          <!-- maxlength="" этот атрибут задает макисмальное количество символов которое можно записать в инпут.  -->
 
-          <input name="name" required placeholder="Ваше имя" type="text" />
           <input
-            name="phone"
-            required
-            placeholder="Ваш телефон"
-            type="number"
+            name="name"
+            minlength="10"
+            placeholder="Ваше имя"
+            type="text"
           />
-          <input name="email" required placeholder="Ваше E-mail" type="email" />
+          <input name="phone" maxlength="" placeholder="Ваш телефон" />
+          <input name="email" placeholder="Ваше E-mail" type="email" />
           <!-- <input type="submit" value="заказать КОНСУЛЬТАЦИЮ" /> -->
           <!-- input c type="submit" это кнопка для для отправки данных формы  на сервер но если мы будем использовать тег button внутри него скрыт тег submit поэтому можно использовать его просто кнопку button-->
 
@@ -327,7 +333,7 @@
                   alt="pulsometr"
                   class="catalog-item__img"
                 />
-                <div class="catalog-item__subtitle">Пульсометр Polar FT1</div>
+                <div class="catalog-item__subtitle">Пульсометр Polar FT2</div>
                 <div class="catalog-item__descr">
                   Для первых шагов в тренировках, основанных на сердечном ритме
                 </div>
@@ -619,6 +625,40 @@
       </div>
     </footer>
 
+    <div class="overlay">
+      <div class="modal" id="consultation">
+        <div class="modal__close">&times;</div>
+        <!-- Помещай в него спец символ в который нам даст элемент крестик на странце для закрытие модального окна.   -->
+        <div class="modal__subtitle">Просто заполните форму заявки</div>
+        <div class="modal__descr">и мы перезвоним вам в течении 10 минут</div>
+        <form class="feed-form feed-form_mt25" action="№">
+          <input name="name" required placeholder="Ваше имя" type="text" />
+          <input name="phone" required placeholder="Ваш телефон" />
+          <input name="email" required placeholder="Ваше E-mail" type="email" />
+          <button class="button button_submit">заказать КОНСУЛЬТАЦИЮ</button>
+        </form>
+      </div>
+      <div class="modal" id="order">
+        <div class="modal__close">&times;</div>
+        <!-- Помещай в него спец символ в который нам даст элемент крестик на странце для закрытие модального окна.   -->
+        <div class="modal__subtitle">Ваш заказ</div>
+        <div class="modal__descr">Пульсометр Polar FT1</div>
+        <form class="feed-form feed-form_mt25" action="№">
+          <input name="name" required placeholder="Ваше имя" type="text" />
+          <input name="phone" required placeholder="Ваш телефон" />
+          <input name="email" required placeholder="Ваше E-mail" type="email" />
+          <button class="button button_submit">купить</button>
+        </form>
+      </div>
+      <div class="modal modal_mini" id="thanks">
+        <div class="modal__close">&times;</div>
+        <div class="modal__subtitle">Спасибо за вашу заявку!</div>
+        <div class="modal__descr">
+          Наш менеджер свяжется с вами в ближайшее время!
+        </div>
+      </div>
+    </div>
+
     <script
       type="text/javascript"
       src="//code.jquery.com/jquery-1.11.0.min.js"
@@ -628,6 +668,8 @@
       src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
     ></script>
     <script src="js/slick.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
