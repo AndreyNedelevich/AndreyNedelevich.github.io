@@ -80,4 +80,43 @@ $(document).ready(function () {
   validateForms("#order form");
 
   $("input[name=phone]").mask("+7 (999)-999-99-99");
+
+  $("form").submit(function (e) {
+    e.preventDefault();
+    // Используем превент дефолт что бы отключить перезагрузку страницы при клике на отправку формы. Благодаря этой команды страница не будет перезагружаться.
+    if (!$(this).valid()) {
+      return;
+    }
+    $.ajax({
+      type: "POST",
+      // Отправляем данные на сервер. Далее прописывае что данные мы будет отправлять а не получать.
+      url: "mailer/smart.php",
+      // указываем какой обработчик будт обрабатывать при url прописываем кудаю
+      data: $(this).serialize(),
+      // serialize() метод подготовки данных перед отправкой на сервер.
+    }).done(function () {
+      $(this).find("input").val("");
+      // Прописываем что после отправки формы все инпуты будут очищены.
+      $("#consultation, #order").fadeOut();
+      $(".overlay, #thanks").fadeIn("slow");
+      $("form").trigger("reset");
+    });
+    return false;
+  });
+
+  // Smooth scroll and pageup
+
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 1600) {
+      $(".pageup").fadeIn();
+    } else {
+      $(".pageup").fadeOut();
+    }
+  });
+
+  $("a[href^='#']").click(function () {
+    const _href = $(this).attr("href");
+    $("html, body").animate({ scrollTop: $(_href).offset().top + "px" });
+    return false;
+  });
 });
