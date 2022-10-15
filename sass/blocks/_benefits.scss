@@ -30,4 +30,17 @@
       text-decoration: underline;
     }
   }
+  &__img {
+    &_animated {
+      animation: heartbeat 1s ease infinite;
+      // Свойства анимации можно записывать комбинировано главное сохранять последовательность укащанную в документации.
+      //animation-name: heartbeat;
+      // animation-duration: 2s;
+      // animation-timing-function: ease;
+      // animation-iteration-count: infinite;
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+  }
 }
